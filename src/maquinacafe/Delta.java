@@ -44,6 +44,9 @@ public class Delta {
             case "LISTAR":
                 listarCafe();
                 break;
+            case "CURTO":
+                cCurto();
+                break;
                 
         }
         } while(!"sair".equals(opcao));

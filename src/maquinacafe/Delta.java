@@ -15,8 +15,8 @@ import java.util.Scanner;
 public class Delta {
     
     private double agua;
-    int CURTO = 25;
-    int NORMAL = 40;
+    private int CURTO = 25;
+    private int NORMAL = 40;
     ArrayList listaCafe = new ArrayList();
     CafeEspresso ce = new CafeEspresso();
     
@@ -28,7 +28,7 @@ public class Delta {
         System.out.println("Inserir comando: ");
         opcao = input.next();
         switch (opcao){
-            case "CAFE":
+            case "CAFE ESPRESSO":
                 System.out.println("Curto ou Normal?");
                 String s = input.next();
                 cEspresso(s);
@@ -140,12 +140,12 @@ public class Delta {
         }
     }
             
-    public int cCurto() {
-        return CURTO;
+    public void cCurto() {
+        System.out.println(CURTO);
     }
     
-    public int cNormal() {
-        return NORMAL;
+    public void cNormal() {
+        System.out.println(NORMAL);
     }
     
     /**

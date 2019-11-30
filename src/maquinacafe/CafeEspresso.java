@@ -10,16 +10,16 @@ package maquinacafe;
  * @author ricardopissarra
  */
 public class CafeEspresso extends Cafe{
-    String nome;
-    static int numCafe = 0;    
+    private String nome;
+       
     public CafeEspresso(){
         super();
-        nome = "Cafe Espresso Livanto.";
+        
     }
     
     @Override
     public String tooString() {
-        return new String("> O seu café Espresso Livanto. Espresso by George ... still alive.");
+        return new String("> O seu " + nome +". Espresso by George ... still alive.");
     }
     
     public void informacao() {
@@ -28,5 +28,12 @@ public class CafeEspresso extends Cafe{
     
     public void lCapsulas(){
         System.out.println("> " + numero + " " + nome);
+    }
+
+    /**
+     * @param nome the nome to set
+     */
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 }

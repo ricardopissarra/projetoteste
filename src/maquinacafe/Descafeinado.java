@@ -10,18 +10,16 @@ package maquinacafe;
  * @author ricardopissarra
  */
 public class Descafeinado extends Cafe {
-    String nome;
-    static int numCafe = 0;
-    int numero;
-    
+    private String nome;
+   
     public Descafeinado(){
         super();
-        nome = "> Cafe Decaffeinato Intenso.";
+        
     }
     
     @Override
     public String tooString() {
-        return new String("> O seu café Decaffeinato Intenso. Decaffeinato by Bruno ... the B side.");
+        return new String("> O seu " + nome + ". Decaffeinato by Bruno ... the B side.");
     }
     
     public void informacao() {
@@ -30,6 +28,13 @@ public class Descafeinado extends Cafe {
     
     public void lCapsulas(){
         System.out.println("> " + numero + " " + nome);
+    }
+
+    /**
+     * @param nome the nome to set
+     */
+    public void setNome(String nome) {
+        this.nome = nome;
     }
     
 }

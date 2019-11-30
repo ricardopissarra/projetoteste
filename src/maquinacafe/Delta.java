@@ -18,7 +18,7 @@ public class Delta {
     private int CURTO = 25;
     private int NORMAL = 40;
     ArrayList listaCafe = new ArrayList();
-    CafeEspresso ce = new CafeEspresso();
+    
     
     public void Start() {
         Scanner input = new Scanner(System.in);
@@ -26,13 +26,15 @@ public class Delta {
         do{
             
         System.out.println("Inserir comando: ");
-        opcao = input.next();
+        opcao = input.nextLine();
+        if (opcao.contains("CAFE ESPRESSO")){
+            cEspresso(opcao);
+        } else if (opcao.contains("CAFE DECAFEINATO")){
+            cDescafeinado(opcao);
+        } else if(opcao.contains("CAFE LUNGO")){
+            cLongo(opcao);
+        }
         switch (opcao){
-            case "CAFE ESPRESSO":
-                System.out.println("Curto ou Normal?");
-                String s = input.next();
-                cEspresso(s);
-                break;
             case "ADD":
                 System.out.println("Quantidade a adicionar?");
                 double a = input.nextDouble();
@@ -47,9 +49,13 @@ public class Delta {
             case "CURTO":
                 cCurto();
                 break;
+            case "NORMAL":
+                cNormal();
+                break;
                 
         }
         } while(!"sair".equals(opcao));
+      
     }
     
     public void adicionarAgua (double valor){
@@ -58,75 +64,45 @@ public class Delta {
     
     public void cEspresso(String s) {
 
-        if(s.equalsIgnoreCase("curto")){
-            if (agua >= 25){
-            agua = agua - 25;
-            ce.informacao();
-            listaCafe.add(ce);} 
-            else {
-                System.out.println("> Não há água suficiente");
-            }
-        }else if(s.equalsIgnoreCase("normal")){
-            if (agua >= 40){
-            agua = agua -40;
-            ce.informacao();
-            listaCafe.add(ce);} 
-            else {
-                System.out.println("> Não há água suficiente");
-            }
-        } else {
-                System.out.println("> Não é possivel satisfazer o seu pedido.");
-        }
+        CafeEspresso ce = new CafeEspresso();
+        if (agua >= 25){
+        agua = agua - 25;
+        ce.setNome(s);
+        ce.informacao();
+        listaCafe.add(ce);} 
+        else {
+
+            System.out.println("> Não há água suficiente");
+        }   
     }
     
     public void cDescafeinado(String s) {
 
-        if(s.equalsIgnoreCase("curto")){
-            if (agua >= 25) {
-            Descafeinado cd = new Descafeinado();
-            agua = agua - 25;
-            cd.informacao();
-            listaCafe.add(cd);
-            } else {
-                System.out.println("> Não há água suficiente");
-            }
-        }else if(s.equalsIgnoreCase("normal")){
-            if (agua >= 40) {
-            Descafeinado cd = new Descafeinado();
-            agua = agua -40;
-            cd.informacao();
-            listaCafe.add(cd);
-            } else {
-                System.out.println("> Não há água suficiente");
-            }
-                
+        
+        if (agua >= 25) {
+        Descafeinado cd = new Descafeinado();
+        agua = agua - 25;
+        cd.setNome(s);
+        cd.informacao();
+        listaCafe.add(cd);
         } else {
-                System.out.println("> Não é possivel satisfazer o seu pedido.");
+            System.out.println("> Não há água suficiente");
         }
     }
     
     public void cLongo(String s) {
         Longo cl = new Longo();
         
-        if(s.equalsIgnoreCase("curto")){
-            if (agua >= 25) {
-                agua = agua - 25;
-                cl.informacao();
-                listaCafe.add(cl);
-            } else {
-                System.out.println("> Não há água suficiente");
-            }
-        }else if(s.equalsIgnoreCase("normal")){
-            if (agua >= 40) {
-                agua = agua -40;
-                cl.informacao();
-                listaCafe.add(cl);
-            } else {
-                System.out.println("> Não há água suficiente");
-            }
+        
+        if (agua >= 40) {
+            agua = agua -40;
+            cl.setNome(s);
+            cl.informacao();
+            listaCafe.add(cl);
         } else {
-                System.out.println("> Não é possivel satisfazer o seu pedido.");
+            System.out.println("> Não há água suficiente");
         }
+
     }
     
     public void nivelAgua(){
@@ -141,11 +117,11 @@ public class Delta {
     }
             
     public void cCurto() {
-        System.out.println(CURTO);
+        System.out.println("> " + CURTO + " ml");
     }
     
     public void cNormal() {
-        System.out.println(NORMAL);
+        System.out.println("> " + NORMAL + " ml");
     }
     
     /**

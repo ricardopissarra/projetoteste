@@ -10,16 +10,15 @@ package maquinacafe;
  * @author ricardopissarra
  */
 public class Longo extends Cafe{
-    String nome;
+    private String nome;
     
     public Longo(){
         super();
-        nome = "> Cafe Lungo Vivalto.";
     }
     
     @Override
     public String tooString() {
-        return new String("> O seu café Lungo Vivalto. Lungo by Elisabetta ... who else.");
+        return new String("> O seu " + nome +". Lungo by Elisabetta ... who else.");
     }
     
     public void informacao() {
@@ -28,5 +27,12 @@ public class Longo extends Cafe{
     
     public void lCapsulas(){
         System.out.println("> " + numero + " " + nome);
+    }
+
+    /**
+     * @param nome the nome to set
+     */
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 }
